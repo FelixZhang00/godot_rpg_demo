@@ -21,6 +21,7 @@ var state = MOVE
 onready var animatorPlayer = $AnimationPlayer
 onready var animatorTree = $AnimationTree
 onready var animationState = animatorTree.get("parameters/playback")
+onready var swordHitBox = $HitBoxPivot/SwordHitbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +29,7 @@ func _ready():
 	animatorTree.active = true
 	animatorTree.set("parameters/Attack/blend_position",Vector2.RIGHT)
 	animatorTree.set("parameters/Roll/blend_position",Vector2.RIGHT)
+	swordHitBox.knockback_vector = roll_velocity
 	
 
 func _physics_process(delta):
@@ -55,6 +57,7 @@ func move_state(delta):
 		velocity += input_vector * ACCELEPATION * delta
 		velocity = velocity.clamped(MAX_SPEED*delta) 
 		roll_velocity = input_vector
+		swordHitBox.knockback_vector = input_vector
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO,FRICTION*delta)	

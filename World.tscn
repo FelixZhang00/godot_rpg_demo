@@ -608,22 +608,10 @@ position = Vector2( 240, 8 )
 [node name="Bat2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 32, 88 )
 
-[node name="AnimatedSprite" parent="YSort/Bat2" index="0"]
-frame = 1
-
 [node name="Bat" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 184, 80 )
 
-[node name="AnimatedSprite" parent="YSort/Bat" index="0"]
-frame = 1
+[node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 184, 120 )
 
 [node name="HealthUI" parent="." instance=ExtResource( 8 )]
-
-[editable path="YSort/Bat2"]
-[editable path="YSort/Bat2/Hurtbox"]
-[editable path="YSort/Bat2/PlayerDetectionZone"]
-[editable path="YSort/Bat2/Hitbox"]
-[editable path="YSort/Bat"]
-[editable path="YSort/Bat/Hurtbox"]
-[editable path="YSort/Bat/PlayerDetectionZone"]
-[editable path="YSort/Bat/Hitbox"]

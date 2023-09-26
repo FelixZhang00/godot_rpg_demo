@@ -3,12 +3,14 @@ extends Control
 var hearts = 4 setget set_hearts
 var max_hearts = 4 setget set_max_hearts
 
-onready var label =$Label
+
+onready var heartUIEmpty = $HeartUIEmpty
+onready var heartUIFull = $HeartUIFull
 
 func set_hearts(value):
 	hearts = clamp(value,0,max_hearts)
-	if label != null:
-		label.text = "HP = " + str(hearts)
+	if heartUIFull != null:
+		heartUIFull.rect_size.x = hearts * 15
 	
 func set_max_hearts(value):
 	max_hearts = max(value,1)

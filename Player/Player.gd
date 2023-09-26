@@ -21,6 +21,7 @@ onready var animatorPlayer = $AnimationPlayer
 onready var animatorTree = $AnimationTree
 onready var animationState = animatorTree.get("parameters/playback")
 onready var swordHitBox = $HitBoxPivot/SwordHitbox
+onready var hurtbox = $Hurtbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -91,8 +92,8 @@ func roll_animation_finish():
 func move():
 	velocity = move_and_slide(velocity * MAX_SPEED)	
 	
-
-
 func _on_Hurtbox_area_entered(area):
 	print("player _on_Hurtbox_area_entered")
 	stats.health -= 1 
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()

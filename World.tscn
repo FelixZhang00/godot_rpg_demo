@@ -541,9 +541,8 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 320, 180 )
+region_rect = Rect2( 0, 0, 799.788, 426.314 )
 
 [node name="DirtPathTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -560,7 +559,12 @@ tile_data = PoolIntArray( -131064, 0, 0, -131063, 0, 1, -131062, 0, 2, -1, 0, 0,
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 143, 59 )
+position = Vector2( 176, 80 )
+
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+current = true
+process_mode = 0
+smoothing_enabled = true
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -609,9 +613,11 @@ position = Vector2( 240, 8 )
 position = Vector2( 32, 88 )
 
 [node name="Bat" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 184, 80 )
+position = Vector2( 288, 48 )
 
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 184, 120 )
+position = Vector2( 240, 168 )
 
-[node name="HealthUI" parent="." instance=ExtResource( 8 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]

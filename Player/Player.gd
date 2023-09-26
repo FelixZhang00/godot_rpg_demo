@@ -1,11 +1,9 @@
 extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var velocity = Vector2.ZERO
 var roll_velocity = Vector2.RIGHT
+var stats = PlayerStats
 
 export var ACCELEPATION = 25
 export var MAX_SPEED = 200
@@ -27,6 +25,7 @@ onready var swordHitBox = $HitBoxPivot/SwordHitbox
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("player _ready")
+	stats.connect("no_health",self,"queue_free")
 	animatorTree.active = true
 	swordHitBox.knockback_vector = roll_velocity
 	
@@ -92,3 +91,8 @@ func roll_animation_finish():
 func move():
 	velocity = move_and_slide(velocity * MAX_SPEED)	
 	
+
+
+func _on_Hurtbox_area_entered(area):
+	print("player _on_Hurtbox_area_entered")
+	stats.health -= 1 

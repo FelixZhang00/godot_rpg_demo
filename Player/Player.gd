@@ -22,6 +22,7 @@ onready var animatorTree = $AnimationTree
 onready var animationState = animatorTree.get("parameters/playback")
 onready var swordHitBox = $HitBoxPivot/SwordHitbox
 onready var hurtbox = $Hurtbox
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 const PlayerHurtSound = preload("res://Player/PlayerHurtSound.tscn")
 
@@ -102,3 +103,10 @@ func _on_Hurtbox_area_entered(area):
 	var playerHurtSound = PlayerHurtSound.instance()
 	get_tree().current_scene.add_child(playerHurtSound)
 	
+
+func _on_Hurtbox_invincibility_started():
+	blinkAnimationPlayer.play("Start")
+
+
+func _on_Hurtbox_invincibility_ended():
+	blinkAnimationPlayer.play("Stop")
